@@ -7,7 +7,7 @@ Monitor reported hash rate from nanopool, this application will check your repor
 
 # Screenshot (Check Hash Rate)
 
-![alt text](./sshot.png "screenshot check hash rate")
+![alt text](./sshot.png =250x "screenshot check hash rate")
 
 ## For More Info
 contact me @[https://github.com/nenjotsu](https://github.com/nenjotsu)
