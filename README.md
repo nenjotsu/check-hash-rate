@@ -3,11 +3,11 @@ Monitor reported hash rate from nanopool, this application will check your repor
 
 # Nanopool Monitoring
 
-![alt text](https://github.com/nenjotsu/check-hash-rate/nanopool.png "nanopool monitoring")
+![alt text](./nanopool.png "nanopool monitoring")
 
 # Screenshot (Check Hash Rate)
 
-![alt text](https://github.com/nenjotsu/check-hash-rate/sshot.png "screenshot check hash rate")
+![alt text](./sshot.png "screenshot check hash rate")
 
 ## For More Info
 contact me @[https://github.com/nenjotsu](https://github.com/nenjotsu)
