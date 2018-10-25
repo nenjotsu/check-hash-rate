@@ -41,9 +41,9 @@ def retryloop(attempts, timeout):
     raise RetryError
 
 
-for retry in retryloop(3, timeout=60):
+for retry in retryloop(1000, timeout=60):
     is_down()
-    time.sleep(10)
+    time.sleep(600)
 
     if is_continue:
         retry()
