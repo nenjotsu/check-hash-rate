@@ -1,17 +1,16 @@
-
-
 import sys, time
-from datetime import datetime, timedelta
+from datetime import datetime
 from bs4 import BeautifulSoup
 import urllib3
 import json
-import heapq
 import os
 
-is_should_stop = False
+is_continue = True
+
 
 class RetryError(Exception):
     pass
+
 
 def is_down():
     http = urllib3.PoolManager()
@@ -20,23 +19,19 @@ def is_down():
     contents = BeautifulSoup(response.data)
     newDictionary = json.loads(str(contents))
     if newDictionary['data'] == 0:
-        is_should_stop = True
         os.system("shutdown /r /t 1")
     if newDictionary['data'] > 0:
-        # notify("Nanopool", "Miner is Running")
         print 'Miner is Running'
-        print str(datetime.now())
-        print 'Status'
-        print str(newDictionary['status'])
-        print 'Hashrate'
-        print str(newDictionary['data'])
-        is_should_stop = False
+        print 'DateTime: ' + str(datetime.now())
+        print 'Status: ' + str(newDictionary['status'])
+        print 'Reported Hashrate: ' + str(newDictionary['data'])
+        print '===================================='
 
 
 def retryloop(attempts, timeout):
     starttime = time.time()
     success = set()
-    for i in range(attempts):
+    for _ in range(attempts):
         success.add(True)
         yield success.clear
         if success:
@@ -46,9 +41,9 @@ def retryloop(attempts, timeout):
     raise RetryError
 
 
-for retry in retryloop(1000, timeout=60):
+for retry in retryloop(3, timeout=60):
     is_down()
-    time.sleep(600)
+    time.sleep(10)
 
-    if is_should_stop == False:
+    if is_continue:
         retry()
